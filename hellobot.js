@@ -1,27 +1,26 @@
 module.exports = function (req, res, next) {
   var userName = req.body.user_name;
   var botPayload = "";
-  
-  if (userName == 'chathuraratanyake' || userName == 'gavinalex' || userName == 'hiranya'){
-    return res.status(200).end();
-  } 
 
   if (userName == 'malmi') {
     botPayload = {
-      text : 'Malmi please stop lying'
+      text : 'Malmi please leave us alone'
     };
-  } else {
-    botPayload = {
-      text : userName + ', please update your tickets with time spent.\nGavin, let the devs handle it ok?'
-    };
-  }
-  return res.status(200).json(botPayload);
-/* else if (userName !== 'slackbot') {
     return res.status(200).json(botPayload);
-  } else {
-    botPayload = {
-      text : 'Hello, ' + userName + '!'
-    };
+  }
+
+  if (userName == 'chathuraratanyake' || userName == 'gavinalex' || userName == 'hiranya'){
     return res.status(200).end();
-  }*/
+  }
+
+  var date = new Date().getSeconds();
+  if (date<10 || (date>20 && date<30) || (date>40 && date<50)) {
+    botPayload = {
+      text : userName + ', please update your tickets with the time spent.\nGavin, no need to chase after these guys'
+    };
+    return res.status(200).json(botPayload);
+  }
+
+  return res.status(200).end();
+
 }
