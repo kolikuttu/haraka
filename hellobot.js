@@ -7,13 +7,14 @@ module.exports = function (req, res, next) {
     botPayload = {
       text : 'Malmi please stop lying'
     };
-    resturn res.status(200).json();
-  } else if (userName !== 'slackbot') {
+    return res.status(200).json();
+  }
+/* else if (userName !== 'slackbot') {
     return res.status(200).json(botPayload);
   } else {
     botPayload = {
       text : 'Hello, ' + userName + '!'
     };
     return res.status(200).end();
-  }
+  }*/
 }
