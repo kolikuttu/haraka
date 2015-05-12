@@ -1,15 +1,17 @@
 module.exports = function (req, res, next) {
   var userName = req.body.user_name;
   var botPayload = "";
- 
-  // avoid infinite loop
+  
   if (userName == 'malmi') {
     botPayload = {
       text : 'Malmi please stop lying'
     };
-    return res.status(200).json(botPayload);
+  } else {
+    botPayload = {
+      text : userName + ', please update your tickets with time spent.'
+    };
   }
-  return res.status(200).end();
+  return res.status(200).json(botPayload);
 /* else if (userName !== 'slackbot') {
     return res.status(200).json(botPayload);
   } else {
