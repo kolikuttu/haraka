@@ -7,8 +7,9 @@ module.exports = function (req, res, next) {
     botPayload = {
       text : 'Malmi please stop lying'
     };
-    return res.status(200).json();
+    return res.status(200).json(botPayload);
   }
+  return res.status(200).end();
 /* else if (userName !== 'slackbot') {
     return res.status(200).json(botPayload);
   } else {
