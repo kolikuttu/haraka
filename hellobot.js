@@ -2,6 +2,10 @@ module.exports = function (req, res, next) {
   var userName = req.body.user_name;
   var botPayload = "";
   
+  if (userName == 'chathuraratanyake' || userName == 'gavinalex' || userName == 'hiranya'){
+    return res.status(200).end();
+  } 
+
   if (userName == 'malmi') {
     botPayload = {
       text : 'Malmi please stop lying'
