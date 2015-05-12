@@ -8,7 +8,7 @@ module.exports = function (req, res, next) {
     };
   } else {
     botPayload = {
-      text : userName + ', please update your tickets with time spent.'
+      text : userName + ', please update your tickets with time spent.\nGavin, let the devs handle it ok?'
     };
   }
   return res.status(200).json(botPayload);
