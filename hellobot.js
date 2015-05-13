@@ -9,7 +9,7 @@ module.exports = function (req, res, next) {
     return res.status(200).json(botPayload);
   }
 
-  if (userName == 'chathuraratanyake' || userName == 'gavinalex' || userName == 'hiranya'){
+  if (userName == 'slackbot' || userName == 'chathuraratanyake' || userName == 'gavinalex' || userName == 'hiranya'){
     return res.status(200).end();
   }
 
