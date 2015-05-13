@@ -1,6 +1,7 @@
 module.exports = function (req, res, next) {
   var userName = req.body.user_name;
   var botPayload = "";
+  var request = require('request');  
 
   if (userName == 'malmi') {
     botPayload = {
@@ -15,12 +16,18 @@ module.exports = function (req, res, next) {
 
   var date = new Date().getSeconds();
   if (date<10 || (date>20 && date<30) || (date>40 && date<50)) {
-    botPayload = {
-      text : userName + ', please update your tickets with the time spent.\nGavin, no need to chase after these guys'
-    };
-    return res.status(200).json(botPayload);
+    var quote = "";
+    request('http://www.iheartquotes.com/api/v1/random?format=json', function(err, response, body){
+      var resJson = JSON.parse(body);
+      quote = resJson.quote;
+      botPayload = {
+        text : quote
+        //text : userName + ', please update your tickets with the time spent.\nGavin, no need to chase after these guys'
+      };
+      return res.status(200).json(botPayload);
+    });
+  } else {
+    return res.status(200).end();
   }
-
-  return res.status(200).end();
 
 }
